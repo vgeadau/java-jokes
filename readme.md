@@ -5,7 +5,8 @@
 - Provided rest endpoint - /random_joke - has several issues regarding special curly quotes and double quotes (see code for more details)
 - The following windows version of Redis was used: Redis-x64-3.0.504.msi which can be installed from https://github.com/microsoftarchive/redis/releases
 - OpenJDK Java version can be downloaded from: https://jdk.java.net/java-se-ri/19
-- Some usefull commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
+- Some useful commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
+- I focused mostly on solving the test properly and offering good coverage as well as relevant integration tests.
 
 ## Description
 This microservice returns jokes over an HTTP REST API.
