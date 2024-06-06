@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * JokeService class.
+ *
+ */
 @Service
 public class JokeService {
 

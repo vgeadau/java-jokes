@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Service handling string related operations.
+ *
  */
 @Service
 public class StringService {

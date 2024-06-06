@@ -7,6 +7,7 @@
 - OpenJDK Java version can be downloaded from: https://jdk.java.net/java-se-ri/19
 - Some useful commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
 - I focused mostly on solving the test properly and offering good coverage as well as relevant integration tests.
+- 
 
 ## Description
 This microservice returns jokes over an HTTP REST API.

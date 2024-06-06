@@ -8,10 +8,11 @@ import java.util.List;
 
 /**
  * Class responsible with persisting of JSON string in a REDIS DB.
+ *
  */
 @Service
 public class PersistenceService {
-    private static final String KEY = "LATEST_JOKES";
+    public static final String KEY = "LATEST_JOKES";
 
     private final RedisTemplate<String, String> redisTemplate;
 

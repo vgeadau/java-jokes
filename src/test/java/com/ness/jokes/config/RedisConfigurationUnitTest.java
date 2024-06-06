@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for {@link RedisConfiguration}.
+ *
  */
 @ExtendWith(MockitoExtension.class)
 public class RedisConfigurationUnitTest {

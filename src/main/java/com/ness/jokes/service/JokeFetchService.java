@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 
 /**
  * Service responsible with fetching the jokes.
+ *
  */
 @Service
 public class JokeFetchService {

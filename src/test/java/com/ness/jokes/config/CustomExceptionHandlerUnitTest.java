@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Unit tests for {@link CustomExceptionHandler}.
+ *
  */
 @ExtendWith(MockitoExtension.class)
 public class CustomExceptionHandlerUnitTest {

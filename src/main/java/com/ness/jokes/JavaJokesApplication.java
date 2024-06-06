@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Main application.
+ *
  */
 @SpringBootApplication
 public class JavaJokesApplication {

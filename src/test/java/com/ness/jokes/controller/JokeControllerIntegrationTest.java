@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * Integration test class for {@link JokeController}.
+ *
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

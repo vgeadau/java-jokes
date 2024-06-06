@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for {@link JokeChoreographer}.
+ *
  */
 @ExtendWith(MockitoExtension.class)
 public class JokeChoreographerUnitTest {

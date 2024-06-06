@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test class for target class: {@link JokeFetchService}.
+ *
  */
 @ExtendWith(MockitoExtension.class)
 public class JokeFetchServiceUnitTest {

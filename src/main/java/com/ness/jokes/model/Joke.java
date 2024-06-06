@@ -5,6 +5,7 @@ import java.util.Objects;
 
 /**
  * Joke DTO used by the API which this application calls.
+ *
  */
 @SuppressWarnings("unused")
 public class Joke implements Serializable {

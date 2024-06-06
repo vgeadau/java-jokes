@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Class used for exception handling.
+ *
  */
 @ControllerAdvice
 @RestController

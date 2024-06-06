@@ -9,6 +9,7 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 /**
  * noSQL database configuration (for Redis).
+ *
  */
 @Configuration
 public class RedisConfiguration {
