@@ -7,7 +7,24 @@
 - OpenJDK Java version can be downloaded from: https://jdk.java.net/java-se-ri/19
 - Some useful commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
 - I focused mostly on solving the test properly and offering good coverage as well as relevant integration tests.
-- 
+- Things that could be improved but weren't due to time limitations were:
+- a) Implementation of point 4 and figuring out why Docker doesn't work for windows and why it fails to start
+-    eventually searching about error and how to properly set its configuration file
+- b) Refactor code so it doesn't use the RedisTemplate in PersistenceService but directly uses the JPA Data template
+-    and removes the need of having to write manually queries for simple operations
+- c) As this is a POC and it virtually only saves one record with its latest jokes and doesn't set all the previous
+-    jokes (default implementation without DELETE). A question could rise here about how it should work either store
+-    everything or the existing behavior is ok.
+- d) Use a separate in memory redis database for integration tests instead of reusing the same "PRODUCTION" database.
+- e) Adjust code to its newer versions and use newer features if better / simpler / more performant.
+- f) Add a logging LOG4J system
+- g) Add JACOCO to see the coverage, should be above 90% per average but still as it is the project doesn't reveal it\
+- h) Add OpenApi (SWAGGER 3.0) to see API documentation in a similar manner as my public "webservice" project that is
+-    fully covered (100% coverage) and which also has JACOCO integrated.
+- i) Once JACOCO is integrated add remaining missing unit tests.
+- j) Add project specific Error classes (children of Runtime exception) in an exception package
+- k) We could even add something basic such "Basic Authentication" (however this particular topic is outside requirements)
+- l) Improve this readme.md if needed.
 
 ## Description
 This microservice returns jokes over an HTTP REST API.
