@@ -25,7 +25,7 @@ public class PersistenceService {
      * overrides last jokes provided by the API (if they exist).
      * @param jokes String JSON
      */
-    public void saveJokes(String jokes) {
+    public void saveLastJokes(String jokes) {
         if (Boolean.TRUE.equals(redisTemplate.hasKey(KEY))) {
             redisTemplate.delete(KEY);
         }

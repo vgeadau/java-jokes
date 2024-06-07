@@ -48,7 +48,7 @@ public class PersistenceServiceUnitTest {
     }
 
     @Test
-    void saveJokes_nonExistentKey_shouldNotDelete() {
+    void saveLastJokes_nonExistentKey_shouldNotDelete() {
         // given
         String jokes = "Jokes JSON";
         ListOperations<String, String> listOperations = Mockito.mock(ListOperations.class);
@@ -58,7 +58,7 @@ public class PersistenceServiceUnitTest {
         when(listOperations.rightPushAll(PersistenceService.KEY, jokes)).thenReturn(1L);
 
         // when
-        persistenceService.saveJokes(jokes);
+        persistenceService.saveLastJokes(jokes);
 
         // then
         verify(redisTemplate).hasKey(PersistenceService.KEY);
@@ -69,7 +69,7 @@ public class PersistenceServiceUnitTest {
     }
 
     @Test
-    void saveJokes_withExistingKey_shouldDelete() {
+    void saveLastJokes_withExistingKey_shouldDelete() {
         // given
         String jokes = "Jokes JSON";
         ListOperations<String, String> listOperations = Mockito.mock(ListOperations.class);
@@ -80,7 +80,7 @@ public class PersistenceServiceUnitTest {
         when(listOperations.rightPushAll(PersistenceService.KEY, jokes)).thenReturn(1L);
 
         // when
-        persistenceService.saveJokes(jokes);
+        persistenceService.saveLastJokes(jokes);
 
         // then
         verify(redisTemplate).hasKey(PersistenceService.KEY);

@@ -10,8 +10,7 @@ if 100 requests are already done in the latest 15 minutes you should receive:
 "During the multiple requests you are allowed to obtain 100 jokes in the last 15 minutes interval"
 if currently N < 100 requests in the latest 15 minutes are done and in the same time
 interval you receive a call with a count that exceeds 100 requests
-"This request exceed the maximum of 100 jokes in the last 15 minutes interval, at this time
-you are allowed to do only X requests."
+"At this time you are only allowed to a number of request equal to = X"
 X = N + count - 100
 For getting Jokes candidate have to use endpoint:
 https://official-joke-api.appspot.com/random_joke

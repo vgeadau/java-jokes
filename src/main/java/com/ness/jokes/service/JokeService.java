@@ -32,7 +32,7 @@ public class JokeService {
     public List<Joke> getJokes(int count) {
         List<Joke> jokes = jokeFetchService.fetchJokes(count);
         String jokesJSON = stringService.getJSON(jokes);
-        persistenceService.saveJokes(jokesJSON);
+        persistenceService.saveLastJokes(jokesJSON);
         return jokes;
     }
 

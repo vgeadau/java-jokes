@@ -2,7 +2,7 @@ package com.ness.jokes.choreographer;
 
 import com.ness.jokes.model.Joke;
 import com.ness.jokes.service.JokeService;
-import com.ness.jokes.util.ErrorMessageUtil;
+import com.ness.jokes.service.ValidatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +16,12 @@ import java.util.List;
 public class JokeChoreographer {
 
     private final JokeService jokeService;
+    private final ValidatorService validatorService;
 
     @Autowired
-    public JokeChoreographer(JokeService jokeService) {
+    public JokeChoreographer(JokeService jokeService, ValidatorService validatorService) {
         this.jokeService = jokeService;
+        this.validatorService = validatorService;
     }
 
     /**
@@ -28,8 +30,11 @@ public class JokeChoreographer {
      * @return list of jokes
      */
     public List<Joke> getJokes(int count) {
-        if (count < 1 || count > 100) {
-            throw new IllegalArgumentException(ErrorMessageUtil.INVALID_COUNT_ERROR);
+
+
+        String message = validatorService.getErrorMessage(count);
+        if (!message.isEmpty()) {
+            throw new IllegalArgumentException(message);
         }
 
         return jokeService.getJokes(count);

@@ -45,7 +45,7 @@ public class JokeServiceUnitTest {
         // then
         verify(jokeFetchService).fetchJokes(count);
         verify(stringService).getJSON(jokes);
-        verify(persistenceService).saveJokes(jokesJSON);
+        verify(persistenceService).saveLastJokes(jokesJSON);
         verifyNoMoreInteractions(jokeFetchService);
         verifyNoMoreInteractions(stringService);
         verifyNoMoreInteractions(persistenceService);
