@@ -37,7 +37,7 @@ Latest received Jokes should be stored in the noSQL storage
 3.5. Implement Assignment in branch “exercise-impl”
 
 ## Some details regarding implementation.
-- The following windows version of Redis was used: Redis-x64-3.0.504.msi which can be installed from https://github.com/microsoftarchive/redis/releases
+- The following "Windows" version of Redis was used: Redis-x64-3.0.504.msi which can be installed from https://github.com/microsoftarchive/redis/releases
 - OpenJDK Java version can be downloaded from: https://jdk.java.net/java-se-ri/19
 - Some useful commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
 - As this is a POC, the main focus is solving the task properly and offering good coverage as well as relevant integration tests.
@@ -50,6 +50,15 @@ Latest received Jokes should be stored in the noSQL storage
 - f) Add OpenApi (SWAGGER 3.0) to see API documentation.
 - g) Add project specific Error classes (children of Runtime exception) in an exception package
 - h) Improve this readme.md if needed.
+
+## How to Redis
+- redis-cli keys * lists persisted keys
+- type <KEY>     * returns the type of the key
+-   for type "string": get <key>
+-   for type "hash": hgetall <key>
+-   for type "list": lrange <key> 0 -1
+-   for type "set": smembers <key>
+-   for type "zset": zrange <key> 0 -1 withscores
 
 ## Description
 This microservice returns jokes over an HTTP REST API.
