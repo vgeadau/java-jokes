@@ -7,11 +7,15 @@ Parameters: count (int) - count of jokes from 1 to 100, default is 5,
 if number of jokes exceeded then service should return 
 "You can get no more than 100 jokes at a time" with http status 400
 if 100 requests are already done in the latest 15 minutes you should receive:
+- Below are some extra problems found that needs special handling:
+-   2 extra validations are required (DONE)
 "During the multiple requests you are allowed to obtain 100 jokes in the last 15 minutes interval"
 if currently N < 100 requests in the latest 15 minutes are done and in the same time
 interval you receive a call with a count that exceeds 100 requests
 "At this time you are only allowed to a number of request equal to = X"
 X = N + count - 100
+-   there is a problem with /random_joke api because it has some special curly characters (IN PROGRESS)
+These characters should be filtered out before returning the result of GET /jokes endpoint
 For getting Jokes candidate have to use endpoint:
 https://official-joke-api.appspot.com/random_joke
 If more than one joke is requested, they must be requested in
