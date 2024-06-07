@@ -21,6 +21,15 @@ public class ValidatorService {
      */
     private Map<Long, Integer> mapAPICalls = new HashMap<>();
 
+    /**
+     * There are 3 possible scenarios where an error message is returned:
+     * 1. When the count is invalid (count is either lower than 1 or greater than 100)
+     * 2. When in the last 15 minutes already 100 jokes were fetched (via 1 or several previous API calls)
+     * 3. When in the last 15 minutes already N is less than 100 jokes were fetched,
+     *    and N + count is greater than 100 (via 1 or several previous API calls).
+     * @param count int
+     * @return empty String if no error, String with error message otherwise.
+     */
     public String getErrorMessage(int count) {
         String result = ErrorMessageUtil.NO_ERROR;
         if (count < 1 || count > 100) {
@@ -43,6 +52,12 @@ public class ValidatorService {
         return result;
     }
 
+    /**
+     * This method also handles the deprecated records (older than 15 minutes) by removing them.
+     *
+     * @param timeOfPreviousCalls timestamp
+     * @return number of jokes fetched in the last 15 minutes
+     */
     private int computeCounts(long timeOfPreviousCalls) {
         int lastCounts = 0;
 
