@@ -1,30 +1,55 @@
 # Jokes Microservice
 
+## Requirements:
+- Description:
+Service should return jokes via exposed REST GET /jokes endpoint
+Parameters: count (int) - count of jokes from 1 to 100, default is 5, 
+if number of jokes exceeded then service should return 
+"You can get no more than 100 jokes at a time" with http status 400
+if 100 requests are already done in the latest 15 minutes you should receive:
+"During the multiple requests you are allowed to obtain 100 jokes in the last 15 minutes interval"
+if currently N < 100 requests in the latest 15 minutes are done and in the same time
+interval you receive a call with a count that exceeds 100 requests
+"This request exceed the maximum of 100 jokes in the last 15 minutes interval, at this time
+you are allowed to do only X requests."
+X = N + count - 100
+For getting Jokes candidate have to use endpoint:
+https://official-joke-api.appspot.com/random_joke
+If more than one joke is requested, they must be requested in
+batches of 10 in parallel (i.e. 10 in parallel, then another 10 in parallel, etc.).
+Latest received Jokes should be stored in the noSQL storage
+
+1. Non-functional requirements:
+1.1. The code should be logically divided into packages and classes, and conform basic design principles
+2.1. The code must be covered with tests.
+3.1. Use "keep it simple" approach
+4.1. Candidate should use noSQL storage - such as Redis
+5.1. Integration test should be provided
+
+2. Time limit:
+2.1. 8 hours. (Extra time for the latest 2 validations and local configuration if needed). 
+
+3. gitHub instructions:
+3.1. Create your own gitHub account (if you don't have it) 2.
+3.2. Make sure that your gitHub Profile contains at least your name and surname
+3.3. Create private repo (for example: "java-jokes")
+3.4. Create branch "exercise-impl"
+3.5. Implement Assignment in branch “exercise-impl”
+
 ## Some details regarding implementation.
-- Due extreme time limitations and errors on Docker point 4. from Non-Functional requirements was not implemented.
-- Provided rest endpoint - /random_joke - has several issues regarding special curly quotes and double quotes (see code for more details)
 - The following windows version of Redis was used: Redis-x64-3.0.504.msi which can be installed from https://github.com/microsoftarchive/redis/releases
 - OpenJDK Java version can be downloaded from: https://jdk.java.net/java-se-ri/19
 - Some useful commands regarding Redis can be learned here: https://stackoverflow.com/questions/8078018/get-redis-keys-and-values-at-command-prompt
-- I focused mostly on solving the test properly and offering good coverage as well as relevant integration tests.
-- Things that could be improved but weren't due to time limitations were:
-- a) Implementation of point 4 and figuring out why Docker doesn't work for windows and why it fails to start
--    eventually searching about error and how to properly set its configuration file
-- b) Refactor code so it doesn't use the RedisTemplate in PersistenceService but directly uses the JPA Data template
--    and removes the need of having to write manually queries for simple operations. Basically just having a Repository class.
-- c) As this is a POC and it virtually only saves one record with its latest jokes and doesn't set all the previous
--    jokes (default implementation without DELETE). A question could rise here about how it should work either store
--    everything or the existing behavior is ok.
-- d) Use a separate in memory redis database for the integration tests instead of reusing the same "PRODUCTION" database.
-- e) Adjust code to its newer versions and use newer features if better / simpler / more performant.
-- f) Add a logging configuration eventually a LOG4J.
-- g) Add JACOCO to see the coverage, should be above 90% per average but still as it is the project doesn't reveal it\
-- h) Add OpenApi (SWAGGER 3.0) to see API documentation in a similar manner as my public "webservice" project that is
--    fully covered (100% coverage) and which also has JACOCO integrated.
-- i) Once JACOCO is integrated add the remaining missing unit tests.
-- j) Add project specific Error classes (children of Runtime exception) in an exception package
-- k) We could even add something basic such "Basic Authentication" (however this particular topic is outside requirements)
-- l) Improve this readme.md if needed.
+- As this is a POC, the main focus is solving the task properly and offering good coverage as well as relevant integration tests.
+- Possible improvements:
+- a) Refactor code so that it doesn't use the PersistenceService instead it uses the JPA Data template Repository class.
+- b) Use a separate database for integration tests.
+- c) Adjust code to its newer versions and use newer features if better / simpler / more performant.
+- d) Add a logging configuration eventually a LOG4J.
+- e) Add JACOCO to see the coverage, make sure we have full coverage.
+- f) Add OpenApi (SWAGGER 3.0) to see API documentation.
+- g) Add project specific Error classes (children of Runtime exception) in an exception package
+- h) Improve this readme.md if needed.
 
 ## Description
 This microservice returns jokes over an HTTP REST API.
