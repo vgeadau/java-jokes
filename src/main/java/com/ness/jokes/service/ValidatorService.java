@@ -36,8 +36,9 @@ public class ValidatorService {
             } else if (numberOfCountsInTheLast15Minutes + count > 100) {
                 int requestsAllowed = numberOfCountsInTheLast15Minutes + count - 100;
                 result = ErrorMessageUtil.REQUEST_LIMIT_ERROR + requestsAllowed;
+            } else if (numberOfCountsInTheLast15Minutes + count <= 100) {
+                mapAPICalls.put(timeOfCall, count);
             }
-            mapAPICalls.put(timeOfCall, count);
         }
         return result;
     }

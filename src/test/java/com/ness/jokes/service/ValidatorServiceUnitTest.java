@@ -89,4 +89,20 @@ public class ValidatorServiceUnitTest {
         assertEquals(ErrorMessageUtil.REQUEST_LIMIT_ERROR + 4, result);
     }
 
+    @Test
+    void getErrorMessage_withSuccessiveFails_shouldNotIncreaseAvailableCounts() {
+        // given
+        HashMap<Long, Integer> mapApiCalls = new HashMap<>();
+        long prevCallKey = System.currentTimeMillis() - 1000;
+        mapApiCalls.put(prevCallKey, 99);
+        target.setMapAPICalls(mapApiCalls);
+
+        // when
+        target.getErrorMessage(5);
+        String result = target.getErrorMessage(5);
+
+        // then 99+5-100 = 4 so we are allowed to do only 4 calls
+        assertEquals(ErrorMessageUtil.REQUEST_LIMIT_ERROR + 4, result);
+    }
+
 }
