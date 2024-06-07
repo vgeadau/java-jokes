@@ -30,11 +30,9 @@ public class JokeChoreographer {
      * @return list of jokes
      */
     public List<Joke> getJokes(int count) {
-
-
-        String message = validatorService.getErrorMessage(count);
-        if (!message.isEmpty()) {
-            throw new IllegalArgumentException(message);
+        String errorMessage = validatorService.getErrorMessage(count);
+        if (!errorMessage.isEmpty()) {
+            throw new IllegalArgumentException(errorMessage);
         }
 
         return jokeService.getJokes(count);
